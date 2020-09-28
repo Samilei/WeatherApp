@@ -1,0 +1,47 @@
+<h1>Weather Data</h1>
+
+<p>This component demonstrates fetching Weather data from the server.</p>
+
+<p *ngIf="!locationList"><em>Loading...</em></p>
+
+<p>
+  <a [routerLink]="['/add-weather']">Create New</a>
+</p>
+
+<form [formGroup]="locationForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Location name</label>
+    <div class="col-md-4">
+      <input class="form-control" type="text" formControlName="name">
+    </div>
+    <span class="text-danger" *ngIf="name.invalid && formDir.submitted">
+      Name is required.
+    </span>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-default">Save</button>
+    <button class="btn" (click)="cancel()">Cancel</button>
+  </div>
+</form>
+
+
+
+<table class='table' *ngIf="locationList">
+  <thead>
+    <tr>
+      <th>LocationId</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let location of locationList">
+      <td>{{ location.locationId }}</td>
+      <td>{{ location.name }}</td>
+      <td>
+        <a [routerLink]="" (click)="delete(location.locationId)">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

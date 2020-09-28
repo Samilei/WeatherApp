@@ -1,0 +1,78 @@
+
+
+<h1>{{title}}</h1>
+<h3>Weather</h3>
+<hr />
+<form [formGroup]="weatherForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+
+      <div class="form-group row">
+    <label class="control-label col-md-12" for="Department">Time & date</label>
+    <div class="col-md-4">
+      <input class="form-control" type="datetime-local" formControlName="dateTime">
+    </div>
+    <span class="text-danger" *ngIf="dateTime.invalid && formDir.submitted">
+      Datetime is required
+    </span>
+  </div>
+
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Temperature</label>
+    <div class="col-md-4">
+      <input class="form-control" type="number" formControlName="temperature">
+    </div>
+    <span class="text-danger" *ngIf="temperature.invalid && formDir.submitted">
+      Name is required.
+    </span>
+  </div>
+
+    <div class="form-group row">
+    <label class="control-label col-md-12" for="Department">Rainfall</label>
+    <div class="col-md-4">
+      <input class="form-control" type="number" formControlName="rainFall">
+    </div>
+    <span class="text-danger" *ngIf="rainFall.invalid && formDir.submitted">
+      Department is required
+    </span>
+  </div>
+
+
+  <div class="form-group row">
+    <label class="control-label col-md-12" for="Department">Windspeed</label>
+    <div class="col-md-4">
+      <input class="form-control" type="number" formControlName="windSpeed">
+    </div>
+    <span class="text-danger" *ngIf="windSpeed.invalid && formDir.submitted">
+      Department is required
+    </span>
+  </div>
+
+  <div class="form-group row">
+    <label class="control-label col-md-12" for="City">Location</label>
+    <div class="col-md-4">
+
+      <!--<div class="col-md-4">
+        <input class="form-control" type="text" formControlName="location">
+      </div>
+      <span class="text-danger" *ngIf="location.invalid && formDir.submitted">
+        Department is required
+      </span>-->
+
+    <select formControlName="location">
+      <option [ngValue]="null" disabled>Choose a location</option>
+      <option *ngFor="let location of locationList" [ngValue]="location.name">
+        {{ location.name }}
+      </option>
+    </select>
+
+
+    </div>
+    <span class="text-danger" *ngIf="location.invalid && formDir.submitted">
+      Location is required
+    </span>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-default">Save</button>
+    <button class="btn" (click)="cancel()">Cancel</button>
+  </div>
+</form>
