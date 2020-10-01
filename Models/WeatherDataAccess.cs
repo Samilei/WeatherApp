@@ -22,7 +22,23 @@ namespace WeatherApp.Models
             }
         }
 
-           
+        public IEnumerable<WeatherInfo> GetFilteredWeatherInfo(Filters filters)
+        {
+
+
+            System.Diagnostics.Trace.WriteLine(filters);
+
+            try
+            {
+                return db.WeatherInfo.Where(t => t.DateTime > filters.StartDate && t.DateTime < filters.EndDate).ToArray();
+
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
         public int AddWeatherInfo(WeatherInfo weather)
         {
             try
@@ -99,6 +115,9 @@ namespace WeatherApp.Models
             }
         }
 
+       
+        
+
         //To Delete the record of a particular employee  
         public int DeleteWeatherInfo(int id)
         {
@@ -121,21 +140,11 @@ namespace WeatherApp.Models
             /* List<Location> lstCity = new List<Location>();
              lstCity = (from CityList in db.Location select CityList).ToList(); */
 
-            List<Location> jep = new List<Location>();
-
-            jep = db.Location.ToList();
-
-            System.Diagnostics.Trace.WriteLine("Joo");
-           // System.Diagnostics.Trace.WriteLine(db.Location.ToList());
-
-            foreach (var i in jep)
-            {
-                System.Diagnostics.Trace.WriteLine(i.Name);
-            }
+           
 
             try
             {
-                return db.Location.ToArray();
+                return db.Location.OrderBy(Location => Location.Name).ToArray();
             }
             catch
             {

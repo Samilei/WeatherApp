@@ -41,7 +41,8 @@ export class AddLocation implements OnInit {
     this.weatherService.getLocationList().subscribe((data) => {
 
       console.log(data);
-      this.locationList = data;
+      this.locationList = data
+ 
       console.log(this.locationList);
     });
 
