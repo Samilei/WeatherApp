@@ -74,6 +74,7 @@ export class WeatherService {
 
   getWeatherWithFilters(filters: any) {
 
+    console.log(filters);
 
 
     return this.http.post(this.myAppUrl + 'api/WeatherInfo/Filter', filters).

@@ -28,7 +28,7 @@
       <td>{{ weather.windSpeed }}</td>
       <td>{{ weather.rainFall }}</td>
       <td>{{ weather.temperature }}</td>
-      <td>{{ weather.dateTime | date: 'd.M.yyyy H.mm'}}</td>
+      <td>{{ weather.dateTime | date: 'dd.MM.yyyy H.mm'}}</td>
       <td>
       <td>
         <a [routerLink]="['/weather/edit/', weather.weatherId]">Edit</a> |

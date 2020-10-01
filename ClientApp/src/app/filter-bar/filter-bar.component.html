@@ -1,8 +1,8 @@
 <form [formGroup]="weatherForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
 
   <div class="form-group row">
-    <label class="control-label col-md-12" for="Department"></label>
-      Start date/label>
+    <label class="control-label col-md-12" for="Department">Start date</label>
+      
       <div class="col-md-4">
         <input class="form-control" type="datetime-local" formControlName="startDate">
       </div>

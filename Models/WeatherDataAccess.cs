@@ -28,9 +28,33 @@ namespace WeatherApp.Models
 
             System.Diagnostics.Trace.WriteLine(filters);
 
+            
+
+
             try
             {
-                return db.WeatherInfo.Where(t => t.DateTime > filters.StartDate && t.DateTime < filters.EndDate).ToArray();
+                List<WeatherInfo> weathers = null;
+
+
+                if (filters.StartDate != null && filters.EndDate != null)
+                {
+                    weathers = db.WeatherInfo.Where(t => t.DateTime > filters.StartDate && t.DateTime < filters.EndDate).ToList();
+                    return weathers;
+                }
+
+                else if (filters.StartDate != null && filters.EndDate == null)
+                {
+                    weathers = db.WeatherInfo.Where(t => t.DateTime > filters.StartDate).ToList();
+                    return weathers;
+                }
+
+                else if (filters.StartDate == null && filters.EndDate != null)
+                {
+                    weathers = db.WeatherInfo.Where(t => t.DateTime < filters.EndDate).ToList();
+                    return weathers;
+                }
+
+                else return weathers;
 
             }
             catch

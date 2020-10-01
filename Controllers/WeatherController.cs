@@ -23,7 +23,8 @@ namespace WeatherApp.Controllers
         [Route("api/WeatherInfo/Filter")]
         public IEnumerable<WeatherInfo> Filter([FromBody] Filters filters)
         {
-            System.Diagnostics.Trace.WriteLine(filters);
+            System.Diagnostics.Trace.WriteLine(filters.EndDate);
+            System.Diagnostics.Trace.WriteLine(filters.StartDate);
             return weatherObj.GetFilteredWeatherInfo(filters);
         }
 
