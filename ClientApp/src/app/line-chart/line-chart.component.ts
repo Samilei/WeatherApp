@@ -6,8 +6,8 @@ import * as d3 from "d3";
 
 @Component({
   selector: 'line-chart',
-  template: `
-      <canvas #chart width="600" height="200"></canvas>`,
+  template: `<h3>Tuulen nopeus</h3>
+      <canvas #chart width="500" height="200"></canvas>`,
   styles: [`
       :host {
           display: inline-block;
@@ -88,7 +88,7 @@ export class LineChartComponent implements AfterViewInit {
         labels: this.Dates,
         datasets: [{
 
-          data: this.Temperatures,
+          data: this.Windspeeds,
           borderColor: '#3cb371',
           backgroundColor: '#0000FF'
 

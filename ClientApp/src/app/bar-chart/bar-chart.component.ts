@@ -6,7 +6,7 @@ import * as d3 from "d3";
 
 @Component({
   selector: 'bar-chart',
-  template: `
+  template: `<h3>Lämpötila ja sademäärä</h3>
       <canvas #chart width="800" height="300"></canvas>`,
   styles: [`
       :host {

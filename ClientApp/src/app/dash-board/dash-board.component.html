@@ -4,21 +4,21 @@
 
 
 
-<div class="container no-gutters">
-  <div class="row no-gutters">
+<div class="container">
+  <div class="row">
 
-    <div class="col-sm-8">
+    <div class="col-md-4">
       <filters (onDatePicked)="refreshWithFilters($event)"></filters>
 
 
       <line-chart [locationFilter]="filtersToUse" [dataSource]="viewData"></line-chart>
-
+      
       <bar-chart [locationFilter]="filtersToUse" [dataSource]="viewData"></bar-chart>
 
     </div>
 
 
-      <div class="col-sm-4">
+      <div class="col-sm-4 offset-sm-4">
         <weather-management></weather-management>
       </div>
     </div>
