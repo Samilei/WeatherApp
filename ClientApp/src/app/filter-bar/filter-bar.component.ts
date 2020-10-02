@@ -24,6 +24,7 @@ export class FilterComponent {
 
 
   weatherForm: FormGroup;
+  locationList: any;
 
   start: any;
   end: any;
@@ -38,13 +39,19 @@ export class FilterComponent {
     private _fb: FormBuilder) {
 
    
+    this._weatherService.getLocationList().subscribe((data) => {
 
+      console.log(data);
+      this.locationList = data;
+      console.log(this.locationList);
+    });
 
 
     this.weatherForm = this._fb.group({
   
       startDate: ['', []],
-      endDate: ['', []]
+      endDate: ['', []],
+      location: ['', []]
     });
 
 
@@ -82,6 +89,7 @@ export class FilterComponent {
 
   get endDate() { return this.weatherForm.get('endDate'); }
   get startDate() { return this.weatherForm.get('startDate'); }
+  get location() { return this.weatherForm.get('location'); }
 
 
 

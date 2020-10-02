@@ -49,6 +49,7 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\add-weather\add-weather.component.ts" />
+    <None Remove="ClientApp\src\app\bar-chart\bar-chart.component.ts" />
     <None Remove="ClientApp\src\app\dash-board\dash-board.component.ts" />
     <None Remove="ClientApp\src\app\fetch-weather\fetch-weather.component.ts" />
     <None Remove="ClientApp\src\app\filter-bar\filter-bar.component.ts" />

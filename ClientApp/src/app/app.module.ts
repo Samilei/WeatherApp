@@ -16,6 +16,7 @@ import { AddLocation } from './manage-locations/manage-locations.component';
 import { FilterComponent } from './filter-bar/filter-bar.component';
 import { DashboardComponent } from './dash-board/dash-board.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
+import { BarChartComponent } from './bar-chart/bar-chart.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { LineChartComponent } from './line-chart/line-chart.component';
     AddLocation,
     FilterComponent,
     DashboardComponent,
-    LineChartComponent
+    LineChartComponent,
+    BarChartComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

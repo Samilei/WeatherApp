@@ -1,30 +1,49 @@
 <form [formGroup]="weatherForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
 
   <div class="form-group row">
-    <label class="control-label col-md-12" for="Department">Start date</label>
-      
-      <div class="col-md-4">
+
+    
+    <div class="col">
+      <label class="control-label col-md-12" for="Start date">Start date</label>
+      <div class="col-md-12">
         <input class="form-control" type="datetime-local" formControlName="startDate">
       </div>
       <span class="text-danger" *ngIf="startDate.invalid && formDir.submitted">
-        Datetime is required
+        Incorrect date input
       </span>
-  </div>
 
-
-  <div class="form-group row">
-    <label class="control-label col-md-12" for="Department">End date</label>
-    <div class="col-md-4">
-      <input class="form-control" type="datetime-local" formControlName="endDate">
     </div>
-    <span class="text-danger" *ngIf="endDate.invalid && formDir.submitted">
-      Datetime is required
-    </span>
-  </div>
 
+ 
+    <div class="col">
+      <label class="control-label col-md-12" for="End date">End date</label>
+      <div class="col-md-12">
+        <input class="form-control" type="datetime-local" formControlName="endDate">
+      </div>
+      <span class="text-danger" *ngIf="endDate.invalid && formDir.submitted">
+        Incorrect date input
+      </span>
+    </div>
 
-  <div class="form-group">
-    <button type="submit" class="btn btn-default">Save</button>
-    <button class="btn" (click)="cancel()">Cancel</button>
-  </div>
+    <div class="col">
+      <label class="control-label col-md-12" for="Location">Location</label>
+      <div class="col-md-12">
+        <select formControlName="location">
+          <option [ngValue]="null" disabled>Choose a location</option>
+          <option *ngFor="let location of locationList" [ngValue]="location.name">
+            {{ location.name }}
+          </option>
+        </select>
+        </div>
+      </div>
+
+    <div class="col">
+      <label class="control-label col-md-12" for="Location"></label>
+      <div class="form-group">
+        <button type="submit" class="btn btn-default">Save</button>
+        <button class="btn" (click)="cancel()">Cancel</button>
+      </div>
+    </div>
+
+    </div>
 </form>

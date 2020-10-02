@@ -7,7 +7,8 @@ import { Observable } from "rxjs";
 
 
 @Component({
-  templateUrl: './fetch-weather.component.html'
+  templateUrl: './fetch-weather.component.html',
+  selector: 'weather-management'
  
 })
 

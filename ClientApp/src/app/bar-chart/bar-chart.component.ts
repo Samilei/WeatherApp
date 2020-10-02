@@ -5,9 +5,9 @@ import { bufferTime } from "rxjs/operators";
 import * as d3 from "d3";
 
 @Component({
-  selector: 'line-chart',
+  selector: 'bar-chart',
   template: `
-      <canvas #chart width="600" height="200"></canvas>`,
+      <canvas #chart width="800" height="300"></canvas>`,
   styles: [`
       :host {
           display: inline-block;
@@ -15,7 +15,7 @@ import * as d3 from "d3";
       }
   `]
 })
-export class LineChartComponent implements AfterViewInit {
+export class BarChartComponent implements AfterViewInit {
 
   @ViewChild('chart', { static: false }) chartRef: ElementRef;
   private chart: Chart;
@@ -26,8 +26,8 @@ export class LineChartComponent implements AfterViewInit {
   Locations = [];
   Dates = [];
 
-  
- 
+
+
 
   @Input()
   private dataSource: any[];
@@ -36,16 +36,16 @@ export class LineChartComponent implements AfterViewInit {
 
   constructor() {
 
-   
+
 
   }
 
   ngOnChanges() {
-    
 
-   // var jsonArray = JSON.parse(JSON.stringify(this.dataSource))
 
-    
+    // var jsonArray = JSON.parse(JSON.stringify(this.dataSource))
+
+
 
     this.Locations.length = 0;
     this.Temperatures.length = 0;
@@ -68,7 +68,7 @@ export class LineChartComponent implements AfterViewInit {
     console.log(this.Locations);
     console.log(this.Temperatures);
 
-   // console.log(jsonArray)
+    // console.log(jsonArray)
 
     if (!this.dataSource) {
       console.log('Nyt ei piirretä')
@@ -83,7 +83,7 @@ export class LineChartComponent implements AfterViewInit {
   ngAfterViewInit() {
 
     this.chart = new Chart(this.chartRef.nativeElement, {
-      type: 'line',
+      type: 'bar',
       data: {
         labels: this.Dates,
         datasets: [{
@@ -110,5 +110,5 @@ export class LineChartComponent implements AfterViewInit {
 
   }
 
- 
+
 }

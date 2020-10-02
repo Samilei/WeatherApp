@@ -7,10 +7,7 @@ import { Observable } from "rxjs";
 
 
 @Component({
-  template: `<filters (onDatePicked)="refreshWithFilters($event)"></filters>
-             <line-chart [dataSource]="viewData"></line-chart>
-             
-`
+      templateUrl: './dash-board.component.html'
 })
 
 export class DashboardComponent {
@@ -35,7 +32,7 @@ export class DashboardComponent {
   public refreshWithFilters(filters): void {
     console.log('Picked date: ', filters);
 
-
+    this.filtersToUse = filters.location;
     this.getFilteredWeatherData(filters)
   }
 

@@ -1,0 +1,30 @@
+<h1>{{title}}</h1>
+<h3>Weather dashboard</h3>
+<hr />
+
+
+
+<div class="container no-gutters">
+  <div class="row no-gutters">
+
+    <div class="col-sm-8">
+      <filters (onDatePicked)="refreshWithFilters($event)"></filters>
+
+
+      <line-chart [locationFilter]="filtersToUse" [dataSource]="viewData"></line-chart>
+
+      <bar-chart [locationFilter]="filtersToUse" [dataSource]="viewData"></bar-chart>
+
+    </div>
+
+
+      <div class="col-sm-4">
+        <weather-management></weather-management>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
