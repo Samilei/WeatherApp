@@ -38,20 +38,20 @@ namespace WeatherApp.Models
 
                 if (filters.StartDate != null && filters.EndDate != null)
                 {
-                    weathers = db.WeatherInfo.Where(t => t.DateTime > filters.StartDate && t.DateTime < filters.EndDate).ToList();
-                    return weathers;
+                   return db.WeatherInfo.Where(t => t.DateTime > filters.StartDate && t.DateTime < filters.EndDate).ToArray();
+                   
                 }
 
                 else if (filters.StartDate != null && filters.EndDate == null)
                 {
-                    weathers = db.WeatherInfo.Where(t => t.DateTime > filters.StartDate).ToList();
-                    return weathers;
+                    return db.WeatherInfo.Where(t => t.DateTime > filters.StartDate).ToArray();
+                    
                 }
 
                 else if (filters.StartDate == null && filters.EndDate != null)
                 {
-                    weathers = db.WeatherInfo.Where(t => t.DateTime < filters.EndDate).ToList();
-                    return weathers;
+                    return db.WeatherInfo.Where(t => t.DateTime < filters.EndDate).ToArray();
+                
                 }
 
                 else return weathers;
