@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --aot=true --buildOptimizer=true",
+    "build": "ng build --prod --aot=false --buildOptimizer=false",
     "build:ssr": "ng run WeatherApp:server:dev",
     "test": "ng test",
     "lint": "ng lint",
