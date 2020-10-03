@@ -18,7 +18,7 @@ jobs:
     - name: Set up .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '2.1.804'
+        dotnet-version: '3.1.102'
 
     - name: Build with dotnet
       run: dotnet build --configuration Release
@@ -31,5 +31,5 @@ jobs:
       with:
         app-name: 'weatherappi'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_fafa08a6abb847f0bc1b29e44b8ad435 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_204cc6d6c0364e18975293fd35c954c0 }}
         package: ${{env.DOTNET_ROOT}}/myapp 
