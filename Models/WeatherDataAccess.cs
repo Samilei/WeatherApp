@@ -23,6 +23,7 @@ namespace WeatherApp.Models
         }
 
            
+
         public int AddWeatherInfo(WeatherInfo weather)
         {
             try
