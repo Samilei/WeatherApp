@@ -59,7 +59,7 @@ export class CreateWeather implements OnInit {
      return;
     }
 
-    if (this.title == "Create") {
+    if (this.title == "Lisää") {
       this.weatherService.saveWeather(this.weatherForm.value)
         .subscribe((data) => {
           this.router.navigate(['/fetch-weather']);

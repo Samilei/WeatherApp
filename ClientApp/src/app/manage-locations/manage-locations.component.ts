@@ -43,7 +43,7 @@ export class AddLocation implements OnInit {
       return;
     }
 
-    if (this.title == "Create") {
+    if (this.title == "Luo uusi") {
       this.weatherService.addLocation(this.locationForm.value)
         .subscribe((data) => {
 
@@ -59,7 +59,7 @@ export class AddLocation implements OnInit {
   }
 
   delete(locationId) {
-    var ans = confirm("Do you want to delete location with Id: " + locationId);
+    var ans = confirm("Haluatko varmasti poistaa paikkakunnan id:llä " + locationId);
     if (ans) {
       this.weatherService.deleteLocation(locationId).subscribe((data) => {
         this.ngOnInit();

@@ -28,8 +28,6 @@ namespace WeatherApp.Controllers
         public int Create([FromBody] WeatherInfo weather)
         {
 
-            System.Diagnostics.Trace.WriteLine(weather);
-
             return weatherObj.AddWeatherInfo(weather);
         }
 
