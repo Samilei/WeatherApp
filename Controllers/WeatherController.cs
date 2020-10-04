@@ -1,9 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using WeatherApp.Models;
-using Microsoft.AspNetCore.Mvc;
 
 namespace WeatherApp.Controllers
 {
@@ -20,21 +17,9 @@ namespace WeatherApp.Controllers
         }
 
         [HttpPost]
-        [Route("api/WeatherInfo/Filter")]
-        public IEnumerable<WeatherInfo> Filter([FromBody] Filters filters)
-        {
-            System.Diagnostics.Trace.WriteLine(filters.EndDate);
-            System.Diagnostics.Trace.WriteLine(filters.StartDate);
-            return weatherObj.GetFilteredWeatherInfo(filters);
-        }
-
-        [HttpPost]
         [Route("api/WeatherInfo/Create")]
         public int Create([FromBody] WeatherInfo weather)
         {
-
-            System.Diagnostics.Trace.WriteLine(weather);
-
             return weatherObj.AddWeatherInfo(weather);
         }
 
@@ -70,9 +55,6 @@ namespace WeatherApp.Controllers
         [Route("api/Location/Create")]
         public int Create([FromBody] Location location)
         {
-
-            System.Diagnostics.Trace.WriteLine(location);
-
             return weatherObj.AddLocation(location);
         }
 

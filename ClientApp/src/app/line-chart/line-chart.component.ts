@@ -2,11 +2,13 @@ import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular
 import { Chart } from "chart.js";
 import { Observable } from "rxjs";
 import { bufferTime } from "rxjs/operators";
+import { DatePipe } from '@angular/common'
+import { transform } from 'typescript';
 
 @Component({
   selector: 'line-chart',
   template: `<h3>Tuulen nopeus</h3>
-      <canvas #chart width="500" height="200"></canvas>`,
+      <canvas #chart width="800" height="300"></canvas>`,
   styles: [`
       :host {
           display: inline-block;
@@ -14,6 +16,7 @@ import { bufferTime } from "rxjs/operators";
       }
   `]
 })
+
 export class LineChartComponent implements AfterViewInit {
 
   @ViewChild('chart', { static: false }) chartRef: ElementRef;
@@ -25,57 +28,53 @@ export class LineChartComponent implements AfterViewInit {
   Locations = [];
   Dates = [];
 
-  
- 
-
   @Input()
   private dataSource: any[];
+
   @Input()
   private locationFilter: any;
 
-  constructor() {
-
-   
+  constructor(public datepipe: DatePipe) {
 
   }
 
   ngOnChanges() {
     
-
-   // var jsonArray = JSON.parse(JSON.stringify(this.dataSource))
-
-    
-
     this.Locations.length = 0;
     this.Temperatures.length = 0;
     this.Windspeeds.length = 0;
     this.Rainfalls.length = 0;
     this.Dates.length = 0;
 
-    var stripped = this.dataSource.forEach(x => {
+    if (this.locationFilter) {
 
-      if (x.location == this.locationFilter) {
+      var stripped = this.dataSource.forEach(x => {
 
-        this.Locations.push(x.location);
-        this.Rainfalls.push(x.rainFall);
-        this.Windspeeds.push(x.windSpeed);
-        this.Temperatures.push(x.temperature);
-        this.Dates.push(x.dateTime);
-      }
-    });
+        if (x.location == this.locationFilter) {
 
-    console.log(this.Locations);
-    console.log(this.Temperatures);
+          this.Locations.push(x.location);
+          this.Windspeeds.push(x.windSpeed);
+          this.Dates.push(this.datepipe.transform(x.dateTime, 'dd.MM.yyyy H.mm'));
+        }
+      });
 
-   // console.log(jsonArray)
+    } else {
+
+      var all = this.dataSource.forEach(x => {
+
+          this.Locations.push(x.location);
+          this.Windspeeds.push(x.windSpeed);
+          this.Dates.push(this.datepipe.transform(x.dateTime, 'dd.MM.yyyy H.mm'));
+      });
+
+    }
 
     if (!this.dataSource) {
-      console.log('Nyt ei piirretä')
+      
     }
 
     if (this.dataSource) {
       this.chart.update();
-      console.log('Nyt piirretään')
     }
   }
 
@@ -86,11 +85,9 @@ export class LineChartComponent implements AfterViewInit {
       data: {
         labels: this.Dates,
         datasets: [{
-
           data: this.Windspeeds,
           borderColor: '#3cb371',
-          backgroundColor: '#0000FF'
-
+          backgroundColor: '#0047AB'
         }]
       },
       options: {
@@ -101,13 +98,16 @@ export class LineChartComponent implements AfterViewInit {
           xAxes: [{
             display: true
           }],
-          yAxes: [{ display: true }]
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            },
+            display: true
+          }
+          ]
         }
       }
     });
 
-
-  }
-
- 
+  } 
 }

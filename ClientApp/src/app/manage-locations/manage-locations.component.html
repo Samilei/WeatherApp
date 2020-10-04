@@ -1,8 +1,6 @@
-<h1>Paikkakunnat</h1>
-
+<h3>Paikkakunnat</h3>
 
 <p *ngIf="!locationList"><em>Ladataan tietoja...</em></p>
-
 
 <form [formGroup]="locationForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
 
@@ -21,8 +19,6 @@
     <button class="btn" (click)="cancel()">Peruuta</button>
   </div>
 </form>
-
-
 
 <table class='table' *ngIf="locationList">
   <thead>

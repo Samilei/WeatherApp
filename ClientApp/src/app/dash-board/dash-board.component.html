@@ -2,26 +2,19 @@
 <h3>Sää-dashboard</h3>
 <hr />
 
-
-
 <div class="container">
   <div class="row">
-
+    <filters (onDatePicked)="refreshWithFilters($event)"></filters>
     <div class="col-md-4">
-      <filters (onDatePicked)="refreshWithFilters($event)"></filters>
-
-
+      <p></p>
       <line-chart [locationFilter]="filtersToUse" [dataSource]="viewData"></line-chart>
-      
+      <p></p>
       <bar-chart [locationFilter]="filtersToUse" [dataSource]="viewData"></bar-chart>
-
     </div>
-
-
-      <div class="col-sm-4 offset-sm-4">
-        <weather-management></weather-management>
-      </div>
-    </div>
+    <!--<div class="col-sm-4 offset-sm-4">
+      <weather-management></weather-management>
+    </div>-->
+  </div>
   </div>
 
 

@@ -3,9 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { NgForm, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FetchWeatherComponent } from '../fetch-weather/fetch-weather.component';
-
 import { WeatherService } from '../Services/weatherservice.service';
-
 
 @Component({
   templateUrl: './add-weather.component.html'
@@ -35,12 +33,9 @@ export class CreateWeather implements OnInit {
       dateTime: ['', [Validators.required]]
     });
 
-
   }
 
   ngOnInit() {
-
-   
 
     this.weatherService.getLocationList().subscribe((data) => {
 
@@ -49,10 +44,6 @@ export class CreateWeather implements OnInit {
       console.log(this.locationList);
     });
 
-
-
-    console.log(this.locationList);
-
     if (this.weatherId > 0) {
       this.title = "Edit";
       this.weatherService.getWeatherById(this.weatherId)
@@ -60,21 +51,13 @@ export class CreateWeather implements OnInit {
           , error => this.errorMessage = error);
     }
 
-
-
-
   }
 
   save() {
 
-    
-
     if (!this.weatherForm.valid) {
      return;
     }
-
-    console.log(this.weatherForm.value)
-
 
     if (this.title == "Create") {
       this.weatherService.saveWeather(this.weatherForm.value)

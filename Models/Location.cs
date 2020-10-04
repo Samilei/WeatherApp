@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace WeatherApp.Models
+﻿namespace WeatherApp.Models
 {
     public partial class Location
     {

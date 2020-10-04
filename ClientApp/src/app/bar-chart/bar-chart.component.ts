@@ -2,6 +2,8 @@ import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular
 import { Chart } from "chart.js";
 import { Observable } from "rxjs";
 import { bufferTime } from "rxjs/operators";
+import { DatePipe } from '@angular/common'
+import { transform } from 'typescript';
 
 @Component({
   selector: 'bar-chart',
@@ -14,6 +16,7 @@ import { bufferTime } from "rxjs/operators";
       }
   `]
 })
+
 export class BarChartComponent implements AfterViewInit {
 
   @ViewChild('chart', { static: false }) chartRef: ElementRef;
@@ -25,49 +28,45 @@ export class BarChartComponent implements AfterViewInit {
   Locations = [];
   Dates = [];
 
-
-
-
   @Input()
   private dataSource: any[];
+
   @Input()
   private locationFilter: any;
 
-  constructor() {
-
-
+  constructor(public datepipe: DatePipe) {
 
   }
 
   ngOnChanges() {
 
-
-    // var jsonArray = JSON.parse(JSON.stringify(this.dataSource))
-
-
-
     this.Locations.length = 0;
     this.Temperatures.length = 0;
-    this.Windspeeds.length = 0;
     this.Rainfalls.length = 0;
     this.Dates.length = 0;
 
-    var stripped = this.dataSource.forEach(x => {
+    if (this.locationFilter) {
 
-      if (x.location == this.locationFilter) {
+      var filtered = this.dataSource.forEach(x => {
 
-        this.Locations.push(x.location);
-        this.Rainfalls.push(x.rainFall);
-        this.Windspeeds.push(x.windSpeed);
-        this.Temperatures.push(x.temperature);
-        this.Dates.push(x.dateTime);
-      }
-    });
+        if (x.location == this.locationFilter) {
 
-    console.log(this.Locations);
-    console.log(this.Temperatures);
+          this.Locations.push(x.location);
+          this.Rainfalls.push(x.rainFall);
+          this.Temperatures.push(x.temperature);
+          this.Dates.push(this.datepipe.transform(x.dateTime, 'dd.MM.yyyy H.mm'));
+        }
+      });
 
-    // console.log(jsonArray)
+    } else {
+
+      var all = this.dataSource.forEach(x => {
+
+          this.Rainfalls.push(x.rainFall);
+          this.Temperatures.push(x.temperature);
+          this.Dates.push(this.datepipe.transform(x.dateTime, 'dd.MM.yyyy H.mm'));        
+      });
+    }
 
     if (!this.dataSource) {
       console.log('Nyt ei piirretä')
@@ -75,7 +74,6 @@ export class BarChartComponent implements AfterViewInit {
 
     if (this.dataSource) {
       this.chart.update();
-      console.log('Nyt piirretään')
     }
   }
 
@@ -86,12 +84,17 @@ export class BarChartComponent implements AfterViewInit {
       data: {
         labels: this.Dates,
         datasets: [{
-
-          data: this.Temperatures,
+          data: this.Rainfalls,
           borderColor: '#3cb371',
-          backgroundColor: '#0000FF'
-
-        }]
+          backgroundColor: '#1d3557'
+        },
+          {
+            data: this.Temperatures,
+            borderColor: '#3cb371',
+            backgroundColor: '#FF8080',
+            type: 'line'
+          }
+        ]
       },
       options: {
         legend: {
@@ -101,7 +104,12 @@ export class BarChartComponent implements AfterViewInit {
           xAxes: [{
             display: true
           }],
-          yAxes: [{ display: true }]
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            },
+            display: true
+          }]
         }
       }
     });

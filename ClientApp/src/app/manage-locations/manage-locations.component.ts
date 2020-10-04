@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-//import { AddLocationComponent } from '../manage-locations/manage-locations.component';
-
 import { WeatherService } from '../Services/weatherservice.service';
-
 
 @Component({
   templateUrl: './manage-locations.component.html'
@@ -31,40 +28,21 @@ export class AddLocation implements OnInit {
       name: ['', [Validators.required]]
     });
 
-
   }
 
   ngOnInit() {
 
-
-
     this.weatherService.getLocationList().subscribe((data) => {
 
-      console.log(data);
-      this.locationList = data
- 
-      console.log(this.locationList);
+      this.locationList = data 
     });
-
-
-
-    console.log(this.locationList);
-
-
-
-
   }
 
   save() {
 
-
-
     if (!this.locationForm.valid) {
       return;
     }
-
-    console.log(this.locationForm.value)
-
 
     if (this.title == "Create") {
       this.weatherService.addLocation(this.locationForm.value)
@@ -72,7 +50,6 @@ export class AddLocation implements OnInit {
 
           this.ngOnInit();
          // this.router.navigate(['/manage-locations']);
-
 
         }, error => this.errorMessage = error)
     }
@@ -92,16 +69,12 @@ export class AddLocation implements OnInit {
     }
   }
 
-
-
-
   get name() { return this.locationForm.get('name'); }
   
 }
 
 interface LocationData {
+
   locationId: number;
   name: string;
-
-
 }

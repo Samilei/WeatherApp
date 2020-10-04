@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace WeatherApp.Models
 {
@@ -14,7 +12,7 @@ namespace WeatherApp.Models
         {
             try
             {
-                return db.WeatherInfo.ToList();
+                return db.WeatherInfo.OrderBy(WeatherInfo => WeatherInfo.DateTime).ToList();
             }
             catch
             {
@@ -25,33 +23,26 @@ namespace WeatherApp.Models
         public IEnumerable<WeatherInfo> GetFilteredWeatherInfo(Filters filters)
         {
 
-
-            System.Diagnostics.Trace.WriteLine(filters);
-
-            
-
-
             try
             {
                 List<WeatherInfo> weathers = null;
 
-
                 if (filters.StartDate != null && filters.EndDate != null)
                 {
-                   return db.WeatherInfo.Where(t => t.DateTime > filters.StartDate && t.DateTime < filters.EndDate).ToArray();
-                   
+                    return db.WeatherInfo.Where(t => t.DateTime > filters.StartDate && t.DateTime < filters.EndDate).OrderBy(WeatherInfo => WeatherInfo.DateTime).ToArray();
+
                 }
 
                 else if (filters.StartDate != null && filters.EndDate == null)
                 {
-                    return db.WeatherInfo.Where(t => t.DateTime > filters.StartDate).ToArray();
-                    
+                    return db.WeatherInfo.Where(t => t.DateTime > filters.StartDate).OrderBy(WeatherInfo => WeatherInfo.DateTime).ToArray();
+
                 }
 
                 else if (filters.StartDate == null && filters.EndDate != null)
                 {
-                    return db.WeatherInfo.Where(t => t.DateTime < filters.EndDate).ToArray();
-                
+                    return db.WeatherInfo.Where(t => t.DateTime < filters.EndDate).OrderBy(WeatherInfo => WeatherInfo.DateTime).ToArray();
+
                 }
 
                 else return weathers;
@@ -93,7 +84,6 @@ namespace WeatherApp.Models
             }
         }
 
-        //To Delete the record of a particular employee  
         public int DeleteLocation(int id)
         {
             try
@@ -109,7 +99,6 @@ namespace WeatherApp.Models
             }
         }
 
-        //To Update the records of a particluar employee  
         public int UpdateWeather(WeatherInfo weather)
         {
             try
@@ -125,7 +114,6 @@ namespace WeatherApp.Models
             }
         }
 
-        //Get the details of a particular employee  
         public WeatherInfo GetWeatherInfo(int id)
         {
             try
@@ -139,10 +127,6 @@ namespace WeatherApp.Models
             }
         }
 
-       
-        
-
-        //To Delete the record of a particular employee  
         public int DeleteWeatherInfo(int id)
         {
             try
@@ -158,13 +142,9 @@ namespace WeatherApp.Models
             }
         }
 
-        //To Get the list of Cities  
+    
         public IEnumerable<Location> GetLocations()
         {
-            /* List<Location> lstCity = new List<Location>();
-             lstCity = (from CityList in db.Location select CityList).ToList(); */
-
-           
 
             try
             {
@@ -174,8 +154,6 @@ namespace WeatherApp.Models
             {
                 throw;
             }
-
-           // return lstCity;
         }
     }
 }

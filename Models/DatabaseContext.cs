@@ -1,14 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.Extensions.DependencyInjection;
-using System.Configuration;
-using Microsoft.IdentityModel.Protocols;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
-using Microsoft.EntityFrameworkCore.SqlServer.Infrastructure.Internal;
-using Microsoft.AspNetCore.DataProtection;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
 
 
 
@@ -17,22 +7,15 @@ namespace WeatherApp.Models
     public partial class DatabaseContext : DbContext
     {
 
-        
-    
-
-
         public DatabaseContext()
         {
 
-            
+
         }
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options)
-            : base(options) {
-
-
-
-       
+            : base(options)
+        {
 
         }
 
@@ -41,20 +24,11 @@ namespace WeatherApp.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
-
-       
-
             if (!optionsBuilder.IsConfigured)
             {
+                //secretsien pyörittely jäi viimetippaan, joten tähän parempi toteutus vielä omalla ajalla
                 optionsBuilder.UseSqlServer("Data Source = tcp:daatta.database.windows.net, 1433; Initial Catalog = daatta; User Id = sadleinonen@daatta; Password = Tiedetään1");
             }
-
-
-
-      
-
-
 
         }
 

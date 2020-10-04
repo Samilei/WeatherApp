@@ -1,13 +1,10 @@
 <h3>Kaikki säätiedot</h3>
 
-
 <p *ngIf="!weatherList"><em>Ladataan tietoja...</em></p>
 
 <p>
   <a [routerLink]="['/add-weather']">Lisää uusi säätieto</a>
 </p>
-
-
 
 <table class='table' *ngIf="weatherList">
   <thead>

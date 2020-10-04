@@ -13,6 +13,6 @@ namespace WeatherApp
         public string Summary { get; set; }
     }
 
-   
+
 
 }
