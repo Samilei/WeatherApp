@@ -6,6 +6,7 @@ import { map, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class WeatherService {
+
   myAppUrl: string = "";
   title: 'Service';
 

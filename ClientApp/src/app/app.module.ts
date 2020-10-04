@@ -8,8 +8,6 @@ import { DatePipe } from '@angular/common'
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { CreateWeather } from './add-weather/add-weather.component';
 import { FetchWeatherComponent } from './fetch-weather/fetch-weather.component';
 import { WeatherService } from './Services/weatherservice.service';
@@ -25,8 +23,6 @@ import { BarChartComponent } from './bar-chart/bar-chart.component';
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     FetchWeatherComponent, 
     CreateWeather,
     AddLocation,
@@ -42,8 +38,6 @@ import { BarChartComponent } from './bar-chart/bar-chart.component';
     ReactiveFormsModule,  
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
       { path: 'fetch-weather', component: FetchWeatherComponent },
       { path: 'add-weather', component: CreateWeather },
       { path: 'weather/edit/:id', component: CreateWeather },

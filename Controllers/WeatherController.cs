@@ -17,9 +17,19 @@ namespace WeatherApp.Controllers
         }
 
         [HttpPost]
+        [Route("api/WeatherInfo/Filter")]
+        public IEnumerable<WeatherInfo> Filter([FromBody] Filters filters)
+        {
+            return weatherObj.GetFilteredWeatherInfo(filters);
+        }
+
+        [HttpPost]
         [Route("api/WeatherInfo/Create")]
         public int Create([FromBody] WeatherInfo weather)
         {
+
+            System.Diagnostics.Trace.WriteLine(weather);
+
             return weatherObj.AddWeatherInfo(weather);
         }
 
@@ -55,6 +65,7 @@ namespace WeatherApp.Controllers
         [Route("api/Location/Create")]
         public int Create([FromBody] Location location)
         {
+
             return weatherObj.AddLocation(location);
         }
 

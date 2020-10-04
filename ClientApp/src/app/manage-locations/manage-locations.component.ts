@@ -27,7 +27,6 @@ export class AddLocation implements OnInit {
       locationId: 0,
       name: ['', [Validators.required]]
     });
-
   }
 
   ngOnInit() {
@@ -59,7 +58,6 @@ export class AddLocation implements OnInit {
     this.router.navigate(['/fetch-weather']);
   }
 
-
   delete(locationId) {
     var ans = confirm("Do you want to delete location with Id: " + locationId);
     if (ans) {
@@ -70,7 +68,6 @@ export class AddLocation implements OnInit {
   }
 
   get name() { return this.locationForm.get('name'); }
-  
 }
 
 interface LocationData {

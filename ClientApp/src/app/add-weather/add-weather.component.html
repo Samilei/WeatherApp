@@ -33,7 +33,6 @@
     </span>
   </div>
 
-
   <div class="form-group row">
     <label class="control-label col-md-12" for="Department">Tuulen nopeus</label>
     <div class="col-md-4">
@@ -56,7 +55,7 @@
       </span>-->
 
     <select formControlName="location">
-      <option [ngValue]="null" disabled>Choose a location</option>
+      <option [ngValue]="null" disabled>Valitse paikkakunta</option>
       <option *ngFor="let location of locationList" [ngValue]="location.name">
         {{ location.name }}
       </option>

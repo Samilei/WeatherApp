@@ -29,7 +29,6 @@ export class DashboardComponent {
     this.getFilteredWeatherData(filters)
   }
 
-
   getAllWeatherData() {
 
     this._weatherService.getWeather().subscribe(

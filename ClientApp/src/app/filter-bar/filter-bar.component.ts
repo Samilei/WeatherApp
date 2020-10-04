@@ -55,7 +55,6 @@ export class FilterComponent {
       this.weatherForm.value.startDate = null
     }
 
-
     this.onDatePicked.emit(this.weatherForm.value)
   }
   
