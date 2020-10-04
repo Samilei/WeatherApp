@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, ViewChild, Input, Output } from '@angular/core';
-import { Chart, Point } from "chart.js";
+import { Chart } from "chart.js";
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { WeatherService } from '../Services/weatherservice.service';

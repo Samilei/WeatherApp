@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { Chart, Point } from "chart.js";
+import { Chart } from "chart.js";
 import { Observable } from "rxjs";
 import { bufferTime } from "rxjs/operators";
 
