@@ -8,7 +8,7 @@ namespace WeatherApp.Models
 {
     public class WeatherDataAccess
     {
-        masterContext db = new masterContext();
+        DatabaseContext db = new DatabaseContext();
 
         public IEnumerable<WeatherInfo> GetAllWeatherInfo()
         {

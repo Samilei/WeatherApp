@@ -2,7 +2,6 @@ import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular
 import { Chart, Point } from "chart.js";
 import { Observable } from "rxjs";
 import { bufferTime } from "rxjs/operators";
-import * as d3 from "d3";
 
 @Component({
   selector: 'bar-chart',

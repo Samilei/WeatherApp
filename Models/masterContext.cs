@@ -14,20 +14,20 @@ using Microsoft.Extensions.Configuration;
 
 namespace WeatherApp.Models
 {
-    public partial class masterContext : DbContext
+    public partial class DatabaseContext : DbContext
     {
 
         
     
 
 
-        public masterContext()
+        public DatabaseContext()
         {
 
             
         }
 
-        public masterContext(DbContextOptions<masterContext> options)
+        public DatabaseContext(DbContextOptions<DatabaseContext> options)
             : base(options) {
 
 
@@ -47,7 +47,6 @@ namespace WeatherApp.Models
 
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source = tcp:daatta.database.windows.net, 1433; Initial Catalog = daatta; User Id = sadleinonen@daatta; Password = Tiedetään1");
             }
 
