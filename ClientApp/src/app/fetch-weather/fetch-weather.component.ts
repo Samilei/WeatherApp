@@ -1,18 +1,29 @@
-import { Component, Inject } from '@angular/core';
+import { AfterViewInit, Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { WeatherService } from '../Services/weatherservice.service';
 import { Observable } from "rxjs";
 
+
+
 @Component({
-  templateUrl: './fetch-weather.component.html'
+  templateUrl: './fetch-weather.component.html',
+  selector: 'weather-management'
+ 
 })
 
 export class FetchWeatherComponent {
   public weatherList: any;
+  public weathers: Observable<any>;
+
+
+ 
 
   constructor(public http: HttpClient, private _router: Router, private _weatherService: WeatherService) {
     this.getWeather();
+
+    this.weathers = this.weatherList;
+
   }
 
   getWeather() {
@@ -20,6 +31,8 @@ export class FetchWeatherComponent {
       data => this.weatherList = data
     )
   }
+
+
 
   delete(weatherID) {
     var ans = confirm("Do you want to delete customer with Id: " + weatherID);
@@ -30,6 +43,10 @@ export class FetchWeatherComponent {
     }
   }
 }
+
+
+
+
 
 interface WeatherData {
   weatherId: number;

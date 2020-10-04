@@ -10,9 +10,12 @@
 
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
+    <UserSecretsId>fdde713e-79d4-4e4c-8a2d-173a80f900fa</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.0.0" />
+    <PackageReference Include="Azure.Identity" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
@@ -49,7 +52,11 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\add-weather\add-weather.component.ts" />
+    <None Remove="ClientApp\src\app\bar-chart\bar-chart.component.ts" />
+    <None Remove="ClientApp\src\app\dash-board\dash-board.component.ts" />
     <None Remove="ClientApp\src\app\fetch-weather\fetch-weather.component.ts" />
+    <None Remove="ClientApp\src\app\filter-bar\filter-bar.component.ts" />
+    <None Remove="ClientApp\src\app\line-chart\line-chart.component.ts" />
     <None Remove="ClientApp\src\app\manage-locations\manage-locations.component.ts" />
     <None Remove="ClientApp\src\app\Services\file.ts" />
     <None Remove="ClientApp\src\app\Services\weatherservice.service.ts" />

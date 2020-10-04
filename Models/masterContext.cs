@@ -1,18 +1,39 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.DependencyInjection;
+using System.Configuration;
+using Microsoft.IdentityModel.Protocols;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
+using Microsoft.EntityFrameworkCore.SqlServer.Infrastructure.Internal;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.Extensions.Configuration;
+
+
 
 namespace WeatherApp.Models
 {
-    public partial class masterContext : DbContext
+    public partial class DatabaseContext : DbContext
     {
-        public masterContext()
+
+        
+    
+
+
+        public DatabaseContext()
         {
+
+            
         }
 
-        public masterContext(DbContextOptions<masterContext> options)
-            : base(options)
-        {
+        public DatabaseContext(DbContextOptions<DatabaseContext> options)
+            : base(options) {
+
+
+
+       
+
         }
 
         public virtual DbSet<Location> Location { get; set; }
@@ -20,11 +41,21 @@ namespace WeatherApp.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+
+
+       
+
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=OUL-XSLEINONE10\\SQLEXPRESS;Database=master;Trusted_Connection=True");
+                optionsBuilder.UseSqlServer("Data Source = tcp:daatta.database.windows.net, 1433; Initial Catalog = daatta; User Id = sadleinonen@daatta; Password = Tiedetään1");
             }
+
+
+
+      
+
+
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

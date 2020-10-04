@@ -1,12 +1,13 @@
-<h1>Weather Data</h1>
+<h3>All Weather Data</h3>
 
-<p>This component demonstrates fetching Weather data from the server.</p>
 
 <p *ngIf="!weatherList"><em>Loading...</em></p>
 
 <p>
   <a [routerLink]="['/add-weather']">Create New</a>
 </p>
+
+
 
 <table class='table' *ngIf="weatherList">
   <thead>
@@ -26,7 +27,7 @@
       <td>{{ weather.windSpeed }}</td>
       <td>{{ weather.rainFall }}</td>
       <td>{{ weather.temperature }}</td>
-      <td>{{ weather.dateTime | date: 'd.M.yyyy H.mm'}}</td>
+      <td>{{ weather.dateTime | date: 'dd.MM.yyyy H.mm'}}</td>
       <td>
       <td>
         <a [routerLink]="['/weather/edit/', weather.weatherId]">Edit</a> |

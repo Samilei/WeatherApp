@@ -17,7 +17,8 @@ export class WeatherService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json;charset=utf-8',
+      'Accept': 'application/json'
     })
   }
 
@@ -69,6 +70,27 @@ export class WeatherService {
     return this.http.get(this.myAppUrl + 'api/WeatherInfo/Index')
      // .map((response: Response) => response.json())
      // .pipe(catchError(this.errorHandler));
+  }
+
+  getWeatherWithFilters(filters: any) {
+
+    console.log(filters);
+
+
+    return this.http.post(this.myAppUrl + 'api/WeatherInfo/Filter', filters).
+      pipe(
+        map((data) => {
+          console.log(data
+          );
+          return data;
+        }),
+
+        catchError(error => {
+          return throwError('Something went wrong!');
+        })
+      ) 
+    // .map((response: Response) => response.json())
+    // .pipe(catchError(this.errorHandler));
   }
 
   getWeatherById(id: number) {

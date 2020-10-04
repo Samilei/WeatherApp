@@ -8,7 +8,7 @@ namespace WeatherApp.Models
 {
     public class WeatherDataAccess
     {
-        masterContext db = new masterContext();
+        DatabaseContext db = new DatabaseContext();
 
         public IEnumerable<WeatherInfo> GetAllWeatherInfo()
         {
@@ -22,7 +22,46 @@ namespace WeatherApp.Models
             }
         }
 
-           
+        public IEnumerable<WeatherInfo> GetFilteredWeatherInfo(Filters filters)
+        {
+
+
+            System.Diagnostics.Trace.WriteLine(filters);
+
+            
+
+
+            try
+            {
+                List<WeatherInfo> weathers = null;
+
+
+                if (filters.StartDate != null && filters.EndDate != null)
+                {
+                   return db.WeatherInfo.Where(t => t.DateTime > filters.StartDate && t.DateTime < filters.EndDate).ToArray();
+                   
+                }
+
+                else if (filters.StartDate != null && filters.EndDate == null)
+                {
+                    return db.WeatherInfo.Where(t => t.DateTime > filters.StartDate).ToArray();
+                    
+                }
+
+                else if (filters.StartDate == null && filters.EndDate != null)
+                {
+                    return db.WeatherInfo.Where(t => t.DateTime < filters.EndDate).ToArray();
+                
+                }
+
+                else return weathers;
+
+            }
+            catch
+            {
+                throw;
+            }
+        }
 
         public int AddWeatherInfo(WeatherInfo weather)
         {
@@ -100,6 +139,9 @@ namespace WeatherApp.Models
             }
         }
 
+       
+        
+
         //To Delete the record of a particular employee  
         public int DeleteWeatherInfo(int id)
         {
@@ -122,21 +164,11 @@ namespace WeatherApp.Models
             /* List<Location> lstCity = new List<Location>();
              lstCity = (from CityList in db.Location select CityList).ToList(); */
 
-            List<Location> jep = new List<Location>();
-
-            jep = db.Location.ToList();
-
-            System.Diagnostics.Trace.WriteLine("Joo");
-           // System.Diagnostics.Trace.WriteLine(db.Location.ToList());
-
-            foreach (var i in jep)
-            {
-                System.Diagnostics.Trace.WriteLine(i.Name);
-            }
+           
 
             try
             {
-                return db.Location.ToArray();
+                return db.Location.OrderBy(Location => Location.Name).ToArray();
             }
             catch
             {

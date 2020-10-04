@@ -13,6 +13,11 @@ import { CreateWeather } from './add-weather/add-weather.component';
 import { FetchWeatherComponent } from './fetch-weather/fetch-weather.component';
 import { WeatherService } from './Services/weatherservice.service';
 import { AddLocation } from './manage-locations/manage-locations.component';
+import { FilterComponent } from './filter-bar/filter-bar.component';
+import { DashboardComponent } from './dash-board/dash-board.component';
+import { LineChartComponent } from './line-chart/line-chart.component';
+import { BarChartComponent } from './bar-chart/bar-chart.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +28,11 @@ import { AddLocation } from './manage-locations/manage-locations.component';
     FetchDataComponent,
     FetchWeatherComponent, 
     CreateWeather,
-    AddLocation
+    AddLocation,
+    FilterComponent,
+    DashboardComponent,
+    LineChartComponent,
+    BarChartComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,6 +47,8 @@ import { AddLocation } from './manage-locations/manage-locations.component';
       { path: 'add-weather', component: CreateWeather },
       { path: 'weather/edit/:id', component: CreateWeather },
       { path: 'manage-locations', component: AddLocation },
+      { path: 'dash-board', component: DashboardComponent },
+      { path: 'filter-bar', component: FilterComponent },
       { path: '**', redirectTo: 'home' }  
     ])
   ],
