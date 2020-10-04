@@ -35,7 +35,7 @@ export class FetchWeatherComponent {
 
 
   delete(weatherID) {
-    var ans = confirm("Do you want to delete customer with Id: " + weatherID);
+    var ans = confirm("Haluatko poistaa säätiedon id:llä " + weatherID);
     if (ans) {
       this._weatherService.deleteWeather(weatherID).subscribe((data) => {
         this.getWeather();

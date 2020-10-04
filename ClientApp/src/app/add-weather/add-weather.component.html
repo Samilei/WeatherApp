@@ -1,53 +1,53 @@
 
 
 <h1>{{title}}</h1>
-<h3>Weather</h3>
+<h3>Säätiedot</h3>
 <hr />
 <form [formGroup]="weatherForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
 
       <div class="form-group row">
-    <label class="control-label col-md-12" for="Department">Time & date</label>
+    <label class="control-label col-md-12" for="Department">Päivämäärä ja aika</label>
     <div class="col-md-4">
       <input class="form-control" type="datetime-local" formControlName="dateTime">
     </div>
     <span class="text-danger" *ngIf="dateTime.invalid && formDir.submitted">
-      Datetime is required
+      Päivämäärä ja aika vaaditaan
     </span>
   </div>
 
   <div class="form-group row">
-    <label class=" control-label col-md-12">Temperature</label>
+    <label class=" control-label col-md-12">Lämpötila</label>
     <div class="col-md-4">
       <input class="form-control" type="number" formControlName="temperature">
     </div>
     <span class="text-danger" *ngIf="temperature.invalid && formDir.submitted">
-      Name is required.
+      Lämpötila vaaditaan
     </span>
   </div>
 
     <div class="form-group row">
-    <label class="control-label col-md-12" for="Department">Rainfall</label>
+    <label class="control-label col-md-12" for="Department">Sademäärä</label>
     <div class="col-md-4">
       <input class="form-control" type="number" formControlName="rainFall">
     </div>
     <span class="text-danger" *ngIf="rainFall.invalid && formDir.submitted">
-      Department is required
+     Sademäärä vaaditaan
     </span>
   </div>
 
 
   <div class="form-group row">
-    <label class="control-label col-md-12" for="Department">Windspeed</label>
+    <label class="control-label col-md-12" for="Department">Tuulen nopeus</label>
     <div class="col-md-4">
       <input class="form-control" type="number" formControlName="windSpeed">
     </div>
     <span class="text-danger" *ngIf="windSpeed.invalid && formDir.submitted">
-      Department is required
+      Tuulen nopeus vaaditaan
     </span>
   </div>
 
   <div class="form-group row">
-    <label class="control-label col-md-12" for="City">Location</label>
+    <label class="control-label col-md-12" for="City">Paikkakunta</label>
     <div class="col-md-4">
 
       <!--<div class="col-md-4">
@@ -67,12 +67,12 @@
 
     </div>
     <span class="text-danger" *ngIf="location.invalid && formDir.submitted">
-      Location is required
+      Paikkakunta vaaditaan
     </span>
   </div>
 
   <div class="form-group">
-    <button type="submit" class="btn btn-default">Save</button>
-    <button class="btn" (click)="cancel()">Cancel</button>
+    <button type="submit" class="btn btn-default">Tallenna</button>
+    <button class="btn" (click)="cancel()">Peruuta</button>
   </div>
 </form>

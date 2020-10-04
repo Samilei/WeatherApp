@@ -1,10 +1,10 @@
-<h3>All Weather Data</h3>
+<h3>Kaikki säätiedot</h3>
 
 
-<p *ngIf="!weatherList"><em>Loading...</em></p>
+<p *ngIf="!weatherList"><em>Ladataan tietoja...</em></p>
 
 <p>
-  <a [routerLink]="['/add-weather']">Create New</a>
+  <a [routerLink]="['/add-weather']">Lisää uusi säätieto</a>
 </p>
 
 
@@ -12,12 +12,12 @@
 <table class='table' *ngIf="weatherList">
   <thead>
     <tr>
-      <th>WeatherId</th>
-      <th>Location</th>
-      <th>Wind speed</th>
-      <th>Rainfall</th>
-      <th>Temperature</th>
-      <th>Date/time</th>
+      <th>Sää-id</th>
+      <th>Paikkakunta</th>
+      <th>Tuulen nopeus</th>
+      <th>Sademäärä</th>
+      <th>Lämpötila</th>
+      <th>Päivämäärä/aika</th>
     </tr>
   </thead>
   <tbody>
@@ -30,8 +30,8 @@
       <td>{{ weather.dateTime | date: 'dd.MM.yyyy H.mm'}}</td>
       <td>
       <td>
-        <a [routerLink]="['/weather/edit/', weather.weatherId]">Edit</a> |
-        <a [routerLink]="" (click)="delete(weather.weatherId)">Delete</a>
+        <a [routerLink]="['/weather/edit/', weather.weatherId]">Muokkaa</a> |
+        <a [routerLink]="" (click)="delete(weather.weatherId)">Poistaa</a>
       </td>
     </tr>
   </tbody>

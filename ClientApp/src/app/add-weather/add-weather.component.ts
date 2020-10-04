@@ -14,7 +14,7 @@ import { WeatherService } from '../Services/weatherservice.service';
 export class CreateWeather implements OnInit {
 
   weatherForm: FormGroup;
-  public title: string = "Create";
+  public title: string = "Lisää";
   weatherId: number;
   errorMessage: any;
   locationList: any;

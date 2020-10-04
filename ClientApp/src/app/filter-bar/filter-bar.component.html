@@ -4,7 +4,7 @@
 
     
     <div class="col">
-      <label class="control-label col-md-12" for="Start date">Start date</label>
+      <label class="control-label col-md-12" for="Start date">Alkamisaika</label>
       <div class="col-md-12">
         <input class="form-control" type="datetime-local" formControlName="startDate">
       </div>
@@ -16,7 +16,7 @@
 
  
     <div class="col">
-      <label class="control-label col-md-12" for="End date">End date</label>
+      <label class="control-label col-md-12" for="End date">Loppumisaika</label>
       <div class="col-md-12">
         <input class="form-control" type="datetime-local" formControlName="endDate">
       </div>
@@ -26,10 +26,10 @@
     </div>
 
     <div class="col">
-      <label class="control-label col-md-12" for="Location">Location</label>
+      <label class="control-label col-md-12" for="Location">Paikkakunta</label>
       <div class="col-md-12">
         <select formControlName="location">
-          <option [ngValue]="null" disabled>Choose a location</option>
+          <option [ngValue]="null" disabled>Valitse paikkakunta</option>
           <option *ngFor="let location of locationList" [ngValue]="location.name">
             {{ location.name }}
           </option>
@@ -40,8 +40,8 @@
     <div class="col">
       <label class="control-label col-md-12" for="Location"></label>
       <div class="form-group">
-        <button type="submit" class="btn btn-default">Save</button>
-        <button class="btn" (click)="cancel()">Cancel</button>
+        <button type="submit" class="btn btn-default">Hae tiedot</button>
+        <!--<button class="btn" (click)="cancel()">Peruuta</button>-->
       </div>
     </div>
 
