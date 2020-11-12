@@ -27,7 +27,7 @@ namespace WeatherApp.Models
             if (!optionsBuilder.IsConfigured)
             {
                 //secretsien pyörittely jäi viimetippaan, joten tähän parempi toteutus vielä omalla ajalla
-                optionsBuilder.UseSqlServer("Data Source = tcp:daatta.database.windows.net, 1433; Initial Catalog = daatta; User Id = sadleinonen@daatta; Password = Tiedetään1");
+                optionsBuilder.UseSqlServer("Data Source = tcp:daatta.database.windows.net, 1433; Initial Catalog = daatta; User Id = sadleinonen@daatta;");
             }
 
         }
